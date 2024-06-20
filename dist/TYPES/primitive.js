@@ -9,23 +9,23 @@
     * Null
  **/
 // BOOLEAN
-var isTrue = true;
-var isFalse = false;
+let isTrue = true;
+let isFalse = false;
 // NUMBER
-var intValue = 30;
-var floatValue = 3.14;
+let intValue = 30;
+let floatValue = 3.14;
 // STRING
-var fullName = 'John Doe';
+let fullName = 'John Doe';
 // VOID
-var voidFun = function () {
+let voidFun = () => {
     return;
 };
 // UNDEFINED - uninitialized
-var undefinedValue;
+let undefinedValue;
 console.log(undefinedValue); //undefined
 // NULL - absent
 function coolFunction(x) {
-    if (x == null) {
+    if (x === null) { // strict check
         console.log('x is null(absent)');
     }
     else if (x) {
