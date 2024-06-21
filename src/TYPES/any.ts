@@ -10,15 +10,15 @@ export const sanitizeInput = (data: any): UserData => {
     let age = 0;
     let email = "unknown@example.com";
 
-    if(typeof data.name === "string" && data.name.trim() !== "") {
+    if(data && typeof data.name === "string" && data.name.trim() !== "") {
         name = data.name;
     }
 
-    if(typeof data.age === "number" && data.age >= 0 && data.age <= 120) {
+    if(data && typeof data.age === "number" && data.age >= 0 && data.age <= 120) {
         age = data.age;
     }
 
-    if( typeof data.email === "string" && validateEmail(data.email)){
+    if(data && typeof data.email === "string" && validateEmail(data.email)){
         email = data.email;
     }
     return {name, age, email}

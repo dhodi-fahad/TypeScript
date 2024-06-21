@@ -1,19 +1,24 @@
 import { validateEmail, sanitizeInput } from "../any";
 
+// Enum for default data values
+enum DefaultData {
+    NAME = 'Anonymous',
+    AGE = 0,
+    EMAIL = 'unknown@example.com'
+}
+
 describe('Test any.ts file', () => {
+
+    // Test validateEmail function
     test('should validate email', () => { 
         expect(validateEmail('john.doe@email.com')).toBe(true)
         expect(validateEmail('')).toBe(false);
-        expect(validateEmail('jhon doe')).toBeFalsy()
+        expect(validateEmail('jhon doe')).toBe(false);
         expect(validateEmail('john@doe')).toBe(false);
      })
 
+     // Test sanitizeInput function
      test('should sanitize input', ()=>{
-        enum DefaultData {
-            NAME = 'Anonymous',
-            AGE = 0,
-            EMAIL = 'unknown@example.com'
-        }
 
         let sampleData1 = {
             name: 'john doe',
@@ -28,14 +33,26 @@ describe('Test any.ts file', () => {
             age:-1,
             email: ''
         }
-        expect(sanitizeInput(sampleData2)).toStrictEqual({name:DefaultData.NAME, age: DefaultData.AGE, email: DefaultData.EMAIL})
+        expect(sanitizeInput(sampleData2)).toEqual({name:DefaultData.NAME, age: DefaultData.AGE, email: DefaultData.EMAIL})
 
         let sampleData3  = {
             name: 'john doe',
             age:121,
             email: 'john.doe'
         }
-        expect(sanitizeInput(sampleData3)).toStrictEqual({name:sampleData3.name, age: DefaultData.AGE, email: DefaultData.EMAIL})
+        expect(sanitizeInput(sampleData3)).toEqual({name:sampleData3.name, age: DefaultData.AGE, email: DefaultData.EMAIL})
+
+        let sampleData4 = "sampleData4";
+        expect(sanitizeInput(sampleData4)).toEqual({name:DefaultData.NAME, age: DefaultData.AGE, email: DefaultData.EMAIL})
+
+        let sampleData7 = "";
+        expect(sanitizeInput(sampleData7)).toEqual({name:DefaultData.NAME, age: DefaultData.AGE, email: DefaultData.EMAIL})
+
+        let sampleData5;
+        expect(sanitizeInput(sampleData5)).toEqual({name:DefaultData.NAME, age: DefaultData.AGE, email: DefaultData.EMAIL})
+
+        let sampleData6 = null;
+        expect(sanitizeInput(sampleData6)).toEqual({name:DefaultData.NAME, age: DefaultData.AGE, email: DefaultData.EMAIL})
 
      })
 
