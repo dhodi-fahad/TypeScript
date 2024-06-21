@@ -1,4 +1,4 @@
-import { validateEmail, sanitizeInput } from "../any";
+import { validateEmail, sanitizeInput } from "../any.datatype";
 
 // Enum for default data values
 enum DefaultData {
