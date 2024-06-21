@@ -1,4 +1,4 @@
-import { isValideUser, parseJson, processUser } from ".."
+import { isValideUser, parseJson, processUser } from "../unknown.datatype"
 describe('Test the UNKNOWN dir', ()=>{
     const jsonString1 = '{"name": "John", "age": 30, "email": "john@email.com"}';
     const jsonString2 = '{"name": "Doe", "age": "unknown", "email": "doe@email.com"}';
