@@ -1,11 +1,11 @@
 // Enums Definition
-enum Role {
+export enum Role {
     Admin = "Admin",
     User = "User",
     Guest = "Guest"
 }
 
-enum Permission {
+export enum Permission {
     Read = "Read",
     Write = "Write",
     Execute = "Execute"
@@ -20,7 +20,7 @@ const rolePermissions: {[key in Role]: Permission[]} = {
 }
 
 
-class User {
+export class User {
     name: string;
     role: Role;
 
@@ -30,7 +30,7 @@ class User {
     }
 }
 
-function hasPermission(user:User, permission: Permission): boolean {
+export function hasPermission(user:User, permission: Permission): boolean {
     return rolePermissions[user.role].includes(permission);
 }
 
