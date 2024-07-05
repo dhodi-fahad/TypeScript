@@ -24,3 +24,29 @@ for(const [k,v] of map){}
 map.set('age', '34')
 map.delete('age')
 map.clear()
+
+// Word Frequency Counter
+function wordFrequencyCounter(input: string) {
+    const words:string[] = input.replace(/[.,!?;:]/g, '').toLowerCase().split(/\s+/);
+    let freqMap = new Map()
+    const countedWords:string[] = []
+    for(const word of words){
+        let counter = 0;
+        if(countedWords.find(elem => elem === word) === undefined){
+            for(const elem of words){
+                if (elem === word){
+                    counter++
+                }
+            }
+            freqMap.set(word, counter);
+            countedWords.push(word)
+        }
+        
+    }
+
+    return freqMap
+}
+
+let text = "Hello world! Hello everyone. This is a test. Hello world.";
+let result = wordFrequencyCounter(text);
+console.log(result)
