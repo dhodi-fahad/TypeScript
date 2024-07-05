@@ -29,21 +29,12 @@ map.clear()
 function wordFrequencyCounter(input: string) {
     const words:string[] = input.replace(/[.,!?;:]/g, '').toLowerCase().split(/\s+/);
     let freqMap = new Map()
-    const countedWords:string[] = []
     for(const word of words){
-        let counter = 0;
-        if(countedWords.find(elem => elem === word) === undefined){
-            for(const elem of words){
-                if (elem === word){
-                    counter++
-                }
-            }
-            freqMap.set(word, counter);
-            countedWords.push(word)
-        }
-        
+        if(freqMap.has(word))
+            freqMap.set(word, freqMap.get(word)+1);
+        else
+            freqMap.set(word, 1);
     }
-
     return freqMap
 }
 
